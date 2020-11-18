@@ -9,10 +9,12 @@ import scala.concurrent.duration.{FiniteDuration, HOURS, MILLISECONDS, NANOSECON
 object Learn extends IOApp {
   def run(args: List[String]): IO[ExitCode] = {
     IO{
-      IO(println(summation(8).unsafeRunSync())).unsafeRunSync()
+      IO {
+        Stream[fs2.Pure, Int] = Stream(1,2,3)
+      }.unsafeRunSync()
     }.as(ExitCode.Success)
   }
-  
+
   def multiple(a: Int, b: Int): Int = a * b
 
   def greet(name: String) : IO[String] = {
@@ -26,5 +28,9 @@ object Learn extends IOApp {
   def summation(n: Int): IO[Int] = {
     val numbers = Stream.iterate(0)((number) => number |+| 1).take(n)
     Foldable[List].fold(numbers.toList).pure[IO]
+  }
+//  def traverse[G[_]: Applicative, A, B](fa: F[A])(f: A => G[B]): G[F[B]]
+  def traverse(data: Stream[fs2.Pure ,Int]) = {
+    Traverse[List].traverse[Option, Int, Int](data.toList)((eachElementInData) => Option(eachElementInData))
   }
 }
