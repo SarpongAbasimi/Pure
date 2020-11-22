@@ -8,11 +8,41 @@ import scodec.bits.ByteVector.Chunk
 import scala.concurrent.Future
 import scala.concurrent.duration.{FiniteDuration, HOURS, MILLISECONDS, NANOSECONDS}
 
+sealed trait TrafficLight
+final case object Red extends TrafficLight
+final case object Yellow extends TrafficLight
+final case object Green extends  TrafficLight
+
+sealed trait Calculation
+final case class Success(result: Int) extends Calculation
+final case class Failure(message: String) extends Calculation
+
+//ADT with Polymorphism
+sealed trait A {
+  def foo: String = "It is an A"
+}
+
+final case object B extends A {
+  override def  foo: String = "It is B!"
+}
+
+final case object C extends A {
+  override def foo: String = "It's C!"
+}
+
+// Product type pattern match
+final case class N(b: String, c: String) {
+  def f(a: N): String = ???
+}
+
+
 object Learn extends IOApp {
   def run(args: List[String]): IO[ExitCode] = {
     IO{
       IO {
-        println(average(Stream(1,2,3,4,5)))
+        val anA: A = B
+        println(anA)
+        println(anA.foo)
       }.unsafeRunSync()
     }.as(ExitCode.Success)
   }
@@ -43,5 +73,9 @@ object Learn extends IOApp {
   val convertEffectFullStreamToList = effectfulStream.compile.toList
   val combineStreams = Stream(1,2,3,4) ++ Stream(2,4,5)
 
-  //Handling Errors using stream
+  // Variance
+//  sealed trait Maybe[+A]
+//  final case class Full[A](value: A) extends Maybe[A]
+//  case object Empty extends  Maybe[Nothing]
+
 }
