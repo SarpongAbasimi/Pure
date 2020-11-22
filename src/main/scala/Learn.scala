@@ -36,6 +36,51 @@ final case class N(b: String, c: String) {
 }
 
 
+sealed trait Food
+final case object Antelope extends Food
+final case object TigerFood extends Food
+final case object Licorice extends Food
+final case class CatFood(food: String) extends Food
+
+//Using polymorphism
+//sealed trait Feline {
+//  def dinner: Food
+//}
+//final case object Lion extends Feline {
+//  def dinner: Food = Antelope
+//}
+//
+//final case object Tiger extends Feline {
+//  def dinner: Food = {
+//    TigerFood
+//  }
+//}
+//final case object Panther extends Feline {
+//  def dinner: Food = {
+//    Licorice
+//  }
+//}
+//final case class cat(favouriteFood: String) extends Feline {
+//  def dinner: Food = {
+//    CatFood(favouriteFood)
+//  }
+//}
+
+sealed trait Feline {
+  def dinner: Food = this match {
+    case Lion => Antelope
+    case Tiger => TigerFood
+    case Panther => Licorice
+    case Cat(favouriteFood) => CatFood(favouriteFood)
+  }
+}
+
+final case object Lion extends Feline
+final case object Tiger extends Feline
+final case object Panther extends Feline
+final case class Cat(favouriteFood: String) extends Feline
+
+
 object Learn extends IOApp {
   def run(args: List[String]): IO[ExitCode] = {
     IO{
