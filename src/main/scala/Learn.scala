@@ -8,7 +8,13 @@ import scodec.bits.ByteVector.Chunk
 import scala.concurrent.Future
 import scala.concurrent.duration.{FiniteDuration, HOURS, MILLISECONDS, NANOSECONDS}
 
-sealed trait TrafficLight
+sealed trait TrafficLight {
+  def next = this match {
+    case Red => Green
+    case Green => Yellow
+    case Yellow => Red
+  }
+}
 final case object Red extends TrafficLight
 final case object Yellow extends TrafficLight
 final case object Green extends  TrafficLight
@@ -43,28 +49,28 @@ final case object Licorice extends Food
 final case class CatFood(food: String) extends Food
 
 //Using polymorphism
-//sealed trait Feline {
-//  def dinner: Food
-//}
-//final case object Lion extends Feline {
-//  def dinner: Food = Antelope
-//}
-//
-//final case object Tiger extends Feline {
-//  def dinner: Food = {
-//    TigerFood
-//  }
-//}
-//final case object Panther extends Feline {
-//  def dinner: Food = {
-//    Licorice
-//  }
-//}
-//final case class cat(favouriteFood: String) extends Feline {
-//  def dinner: Food = {
-//    CatFood(favouriteFood)
-//  }
-//}
+sealed trait Feline1 {
+  def dinner: Food
+}
+final case object Lion1 extends Feline1 {
+  def dinner: Food = Antelope
+}
+
+final case object Tiger1 extends Feline1 {
+  def dinner: Food = {
+    TigerFood
+  }
+}
+final case object Panther1 extends Feline1 {
+  def dinner: Food = {
+    Licorice
+  }
+}
+final case class cat1(favouriteFood: String) extends Feline1 {
+  def dinner: Food = {
+    CatFood(favouriteFood)
+  }
+}
 
 sealed trait Feline {
   def dinner: Food = this match {
