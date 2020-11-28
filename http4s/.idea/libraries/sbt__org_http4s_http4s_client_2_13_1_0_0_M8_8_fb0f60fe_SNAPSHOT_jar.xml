@@ -1,0 +1,13 @@
+<component name="libraryTable">
+  <library name="sbt: org.http4s:http4s-client_2.13:1.0.0-M8+8-fb0f60fe-SNAPSHOT:jar">
+    <CLASSES>
+      <root url="jar://$USER_HOME$/Library/Caches/Coursier/v1/https/oss.sonatype.org/content/repositories/snapshots/org/http4s/http4s-client_2.13/1.0.0-M8%2B8-fb0f60fe-SNAPSHOT/http4s-client_2.13-1.0.0-M8%2B8-fb0f60fe-SNAPSHOT.jar!/" />
+    </CLASSES>
+    <JAVADOC>
+      <root url="jar://$USER_HOME$/Library/Caches/Coursier/v1/https/oss.sonatype.org/content/repositories/snapshots/org/http4s/http4s-client_2.13/1.0.0-M8%2B8-fb0f60fe-SNAPSHOT/http4s-client_2.13-1.0.0-M8%2B8-fb0f60fe-SNAPSHOT-javadoc.jar!/" />
+    </JAVADOC>
+    <SOURCES>
+      <root url="jar://$USER_HOME$/Library/Caches/Coursier/v1/https/oss.sonatype.org/content/repositories/snapshots/org/http4s/http4s-client_2.13/1.0.0-M8%2B8-fb0f60fe-SNAPSHOT/http4s-client_2.13-1.0.0-M8%2B8-fb0f60fe-SNAPSHOT-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>
