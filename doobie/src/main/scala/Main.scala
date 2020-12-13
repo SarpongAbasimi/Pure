@@ -3,7 +3,6 @@ import doobie.implicits._
 import cats._
 import cats.effect._
 import cats.implicits._
-import fs2._
 
 
 object Main {
@@ -18,12 +17,18 @@ object Main {
       "",                          // password
       Blocker.liftExecutionContext(ExecutionContexts.synchronous) // just for testing
     )
+
+    val createTable: IO[ConnectionIO[Int]]= IO(sql"create table animal(id int primary key not null, name text not null)".update.run)
+    val insertDataIntoAnimal: IO[ConnectionIO[Int]] = IO(sql"insert into animal(id name) values(1, bam)".update.run)
+
+
     val myQuery = sql"select name from person"
-  .query[String]
-  .stream.compile
-  .toList.transact(xa)
-  .unsafeRunSync()
-  .foreach(println)
+      .query[String]
+      .stream.compile
+      .toList
+      .transact(xa)
+      .unsafeRunSync()
+      .foreach(println)
 
   }
 }
