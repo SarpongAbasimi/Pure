@@ -10,7 +10,7 @@ object Main {
     implicit val cs = IO.contextShift(ExecutionContexts.synchronous)
     val progaram1: ConnectionIO[Int] = 42.pure[ConnectionIO]
 
-    val xa = Transactor.fromDriverManager[IO](
+    val xa:Transactor.Aux[IO, Unit] = Transactor.fromDriverManager[IO](
       "org.postgresql.Driver",     // driver classname
       "jdbc:postgresql:chrissongz",     // connect URL (driver-specific)
       "chrissongz",                  // user
