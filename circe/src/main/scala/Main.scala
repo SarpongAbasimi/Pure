@@ -2,21 +2,26 @@ import io.circe._
 import io.circe.parser._
 import io.circe.syntax._
 import io.circe.generic.semiauto._
-import io.circe.generic.auto._
+//import io.circe.generic.auto._
 
 case class Movie(name:String, age:Int)
 
 object Main {
+  object EncodersAndDecoders {
+    implicit val movieEncoder = new Encoder[Movie] {
+      final def apply(a: Movie): Json = {
+        val json = s"""{
+          |"name":"${a.name}",
+          |"age":"${a.age}"
+          |}""".stripMargin
+        parse(json).getOrElse(Json.Null)
+      }
+    }
+  }
+  import EncodersAndDecoders._
+
   def main(args: Array[String]): Unit = {
-    val someList = List(1,2,3,4)
-    val encodeToJson = someList.asJson
-    val decodeJsonToList = encodeToJson.as[List[Int]]
-//    implicit val movieEncoder: Encoder[Movie] = deriveEncoder[Movie]
-    println(Movie("Avengers", 3).asJson)
-
-
-//    print(encodeToJson)
-//    println(decodeJsonToList)
+    println(Movie("a", 1).asJson)
   }
 
   def someRandomJson = {
