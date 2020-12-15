@@ -17,11 +17,22 @@ object Main {
         parse(json).getOrElse(Json.Null)
       }
     }
+
+    implicit val movieDecoder = new Decoder[Movie] {
+      final def apply(c: HCursor): Decoder.Result[Movie] = {
+        for {
+          name <- c.downField("name").as[String]
+          age <- c.downField("age").as[Int]
+        } yield Movie(name, age)
+      }
+    }
   }
   import EncodersAndDecoders._
 
   def main(args: Array[String]): Unit = {
-    println(Movie("a", 1).asJson)
+    val encoderedMovie = Movie("a", 1).asJson
+    val decodedMovie = encoderedMovie.as[Movie]
+    println(decodedMovie)
   }
 
   def someRandomJson = {
