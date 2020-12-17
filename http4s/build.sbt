@@ -17,5 +17,6 @@ libraryDependencies ++= Seq(
   "org.http4s" %% "http4s-circe" % http4sVersion,
   "io.circe" %% "circe-generic" % "0.8.0",
   "io.circe" %% "circe-generic" % "0.13.0",
-  "io.circe" %% "circe-literal" % "0.13.0"
+  "io.circe" %% "circe-literal" % "0.13.0",
+  "org.specs2" %% "specs2-core" % "4.10.0" % "test"
 )
