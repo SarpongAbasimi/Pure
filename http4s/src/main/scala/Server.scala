@@ -11,7 +11,8 @@ object Server {
       Routes.index[F]       <+>
       Routes.helloName[F]   <+>
       Routes.postRequest[F] <+>
-      Routes.dealingWithJson[F]
+//      Routes.dealingWithJson[F] <+>
+      Routes.makeR[F]
       ).orNotFound
 
     BlazeServerBuilder[F](global)
