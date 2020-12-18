@@ -1,8 +1,7 @@
 import cats.effect._
 import doobie._
 import doobie.implicits._
-
-final case class Todo(id: Int, todo: String)
+import Encoders._
 
 object TodoHelpers {
   def getTodos[F[_]](transcator: Transactor.Aux[F, Unit])(implicit b: Bracket[F, Throwable]) = {
@@ -11,6 +10,13 @@ object TodoHelpers {
       .stream
       .compile
       .toList
+      .transact(transcator)
+  }
+
+  def getTodoByID[F[_]](id: Int, transcator: Transactor.Aux[F, Unit])(implicit b: Bracket[F, Throwable]) = {
+    sql"select * from todos where id=$id"
+      .query[Todo]
+      .unique
       .transact(transcator)
   }
 }
