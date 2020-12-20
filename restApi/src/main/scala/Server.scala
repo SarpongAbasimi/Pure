@@ -10,7 +10,8 @@ object Server {
 
     val httpApp = (
       Routes.index[F](transactor[F]) <+>
-      Routes.show[F](transactor[F])
+      Routes.show[F](transactor[F]) <+>
+      Routes.create[F](transactor[F])
       ).orNotFound
     BlazeServerBuilder[F](global).
       bindHttp(9010, "localhost")

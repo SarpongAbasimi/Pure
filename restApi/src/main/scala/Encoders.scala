@@ -1,7 +1,9 @@
 import cats.Applicative
+import io.circe.Decoder.Result
 import io.circe._
 import org.http4s.circe._
 import org.http4s.EntityEncoder
+import cats.effect.Sync
 
 object Encoders {
   final case class Todo(id: Int, todo: String)
@@ -20,4 +22,19 @@ object Encoders {
     final def apply(userName: Name): Json = Json.obj(("name", Json.fromString(userName.name)))
   }
   implicit def nameEntityEncoder[F[_]] = jsonEncoderOf[F, Name]
+}
+
+object Decoders {
+  import  Encoders.Todo
+
+  implicit val todoDecoder: Decoder[Todo] = new Decoder[Todo] {
+    final def apply(c: HCursor): Result[Todo] = {
+      for {
+        id <- c.downField("id").as[Int]
+        todo <- c.downField("todo").as[String]
+      } yield Todo(id, todo)
+    }
+  }
+
+  implicit def todoEntityDecoder[F[_]: Sync] = jsonOf[F, Todo]
 }
