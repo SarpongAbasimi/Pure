@@ -5,7 +5,7 @@ import Encoders.Todo
 
 object TodoHelpers {
   def getTodos[F[_]](transcator: Transactor.Aux[F, Unit])(implicit b: Bracket[F, Throwable]) = {
-    sql"select id, name from todos"
+    sql"select id, todo from todos"
       .query[Todo]
       .stream
       .compile

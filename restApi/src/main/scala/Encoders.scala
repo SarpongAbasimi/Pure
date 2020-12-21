@@ -4,6 +4,7 @@ import io.circe._
 import org.http4s.circe._
 import org.http4s.EntityEncoder
 import cats.effect.Sync
+import io.circe.syntax._
 
 object Encoders {
   final case class Todo(id: Int, todo: String)
@@ -22,6 +23,13 @@ object Encoders {
     final def apply(userName: Name): Json = Json.obj(("name", Json.fromString(userName.name)))
   }
   implicit def nameEntityEncoder[F[_]] = jsonEncoderOf[F, Name]
+
+  implicit val listOfTodosEncoder: Encoder[List[Todo]] = new Encoder[List[Todo]] {
+    final def apply(a: List[Todo]): Json = {
+      ???
+    }
+  }
+  implicit def listOfTodosEntityEncoder[F[_]] = jsonEncoderOf[F, List[Todo]]
 }
 
 object Decoders {

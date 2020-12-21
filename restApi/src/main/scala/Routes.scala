@@ -15,7 +15,7 @@ object Routes {
     HttpRoutes.of[F]{
       case GET -> Root => {
         val todos = TodoHelpers.getTodos(transactor)
-        Ok("Hey")
+        todos.flatMap(Ok(_))
       }
     }
   }
