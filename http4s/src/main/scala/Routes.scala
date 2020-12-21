@@ -2,10 +2,7 @@ import cats.effect._
 import org.http4s._
 import org.http4s.dsl.Http4sDsl
 import io.circe._
-import io.circe.literal._
 import org.http4s.circe._
-//import io.circe.generic.auto._
-import io.circe.syntax._
 
 case class Movie(title: String, Rating: Int, Lang: String)
 case class Data(id: String, title: String)

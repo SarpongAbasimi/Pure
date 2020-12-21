@@ -5,7 +5,6 @@ import org.http4s.implicits._
 class RoutesSpec extends org.specs2.mutable.Specification {
 
   "Hello" >> {
-    println("---------------------------------")
     retHelloWorld.status must beEqualTo(Status.Ok)
     retHelloWorld.as[String].unsafeRunSync() must beEqualTo("Hello")
   }
