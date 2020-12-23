@@ -1,10 +1,9 @@
 import io.circe._
 import io.circe.parser._
 import io.circe.syntax._
-import io.circe.generic.semiauto._
-//import io.circe.generic.auto._
 
 case class Movie(name:String, age:Int)
+case class Car(name:String, movie: Movie, brand: String)
 
 object Main {
   object EncodersAndDecoders {
@@ -26,13 +25,28 @@ object Main {
         } yield Movie(name, age)
       }
     }
+
+    implicit val carEncoder = new Encoder[Car] {
+      final def apply(a: Car): Json = {
+        val json = s"""{
+                      |"name":"${a.name}",
+                      |"movie":"${a.movie}",
+                      |"brand":"${a.brand}"
+                      |}""".stripMargin
+        parse(json).getOrElse(Json.Null)
+      }
+    }
   }
   import EncodersAndDecoders._
 
   def main(args: Array[String]): Unit = {
-    val encoderedMovie = Movie("a", 1).asJson
-    val decodedMovie = encoderedMovie.as[Movie]
-    println(decodedMovie)
+    val aFructionThattakesAAndReturnB: (Movie) => Car = (movie) => Car("Jag", movie, "Misty")
+    val aFunctionThatConvertsMovieToJson = movieEncoder
+    val aFunctionThatConvertsCarToJson = carEncoder
+
+    implicit val hh: Encoder[Movie]  = aFunctionThatConvertsCarToJson.contramap(aFructionThattakesAAndReturnB)
+    println(Movie("23", 4).asJson(hh))
+
   }
 
   def someRandomJson = {
