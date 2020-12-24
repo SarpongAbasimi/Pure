@@ -3,17 +3,21 @@ import org.http4s._
 import org.http4s.dsl.Http4sDsl
 import io.circe._
 import org.http4s.circe._
+import org.http4s.client.Client
+import org.http4s.client.dsl.Http4sClientDsl
 
 case class Movie(title: String, Rating: Int, Lang: String)
 case class Data(id: String, title: String)
 
 object Routes {
-  def index[F[_] : Sync]: HttpRoutes[F] = {
+
+  def index[F[_] : Sync](client: Client[F]): HttpRoutes[F] = {
     val dsl = new Http4sDsl[F] {}
+    val something = client.expect[String]("https://jsonplaceholder.typicode.com/todos/1")
     import dsl._
     HttpRoutes.of[F]{
       case GET -> Root => {
-        Ok("Hello")
+        Ok(something)
       }
     }
   }
@@ -76,5 +80,12 @@ object Routes {
         Ok(Movie("hey", 1, "ha"))
       }
     }
+
   }
+
+  def routeWithClient[F[_]: Sync](client: Client[F]) = {
+    val dsl = new Http4sClientDsl[F]{}
+    client.expect[String]("https://jsonplaceholder.typicode.com/todos/1")
+  }
+
 }
