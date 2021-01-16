@@ -1,0 +1,7 @@
+[0m[[0m[0mdebug[0m] [0m[0mCopy resource mappings: [0m
+[0m[[0m[0mdebug[0m] [0m[0m	(/Users/chrissongz/Desktop/sca/playWithCats/conf/logback.xml,/Users/chrissongz/Desktop/sca/playWithCats/target/scala-2.13/classes/logback.xml)[0m
+[0m[[0m[0mdebug[0m] [0m[0m	(/Users/chrissongz/Desktop/sca/playWithCats/conf/messages,/Users/chrissongz/Desktop/sca/playWithCats/target/scala-2.13/classes/messages)[0m
+[0m[[0m[0mdebug[0m] [0m[0m	(/Users/chrissongz/Desktop/sca/playWithCats/conf/application.conf,/Users/chrissongz/Desktop/sca/playWithCats/target/scala-2.13/classes/application.conf)[0m
+[0m[[0m[0mdebug[0m] [0m[0m	(/Users/chrissongz/Desktop/sca/playWithCats/conf/application.default.conf,/Users/chrissongz/Desktop/sca/playWithCats/target/scala-2.13/classes/application.default.conf)[0m
+[0m[[0m[0mdebug[0m] [0m[0m	(/Users/chrissongz/Desktop/sca/playWithCats/conf/routes,/Users/chrissongz/Desktop/sca/playWithCats/target/scala-2.13/classes/routes)[0m
+[0m[[0m[0mdebug[0m] [0m[0m	(/Users/chrissongz/Desktop/sca/playWithCats/conf/evolutions/default/1.sql,/Users/chrissongz/Desktop/sca/playWithCats/target/scala-2.13/classes/evolutions/default/1.sql)[0m

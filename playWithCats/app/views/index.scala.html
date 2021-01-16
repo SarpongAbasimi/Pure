@@ -1,0 +1,9 @@
+@(todos: List[model.Todo])
+
+@main("Welcome") {
+  @for(todo <- todos){
+    <div>
+      <p>@todo.todo</p>
+    </div>
+  }
+}

@@ -1,0 +1,6 @@
+[0m[[0m[31merror[0m] [0m[0m/Users/chrissongz/Desktop/sca/playWithCats/app/controllers/HomeController.scala:24:27: type mismatch;[0m
+[0m[[0m[31merror[0m] [0m[0m found   : List[model.TodoApp][0m
+[0m[[0m[31merror[0m] [0m[0m required: List[model.Todo][0m
+[0m[[0m[31merror[0m] [0m[0m      Ok(views.html.index(listOfToDos))[0m
+[0m[[0m[31merror[0m] [0m[0m                          ^[0m
+[0m[[0m[31merror[0m] [0m[0mone error found[0m
