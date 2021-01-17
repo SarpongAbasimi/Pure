@@ -1,6 +1,6 @@
 // @GENERATOR:play-routes-compiler
 // @SOURCE:/Users/chrissongz/Desktop/sca/playWithCats/conf/routes
-// @DATE:Sat Jan 16 18:04:57 GMT 2021
+// @DATE:Sun Jan 17 12:28:18 GMT 2021
 
 import play.api.routing.JavaScriptReverseRoute
 
@@ -18,6 +18,26 @@ package controllers.javascript {
     }
 
   
+    // @LINE:9
+    def created: JavaScriptReverseRoute = JavaScriptReverseRoute(
+      "controllers.HomeController.created",
+      """
+        function() {
+          return _wA({method:"POST", url:"""" + _prefix + { _defaultPrefix } + """" + "created"})
+        }
+      """
+    )
+  
+    // @LINE:8
+    def create: JavaScriptReverseRoute = JavaScriptReverseRoute(
+      "controllers.HomeController.create",
+      """
+        function() {
+          return _wA({method:"GET", url:"""" + _prefix + { _defaultPrefix } + """" + "create"})
+        }
+      """
+    )
+  
     // @LINE:7
     def index: JavaScriptReverseRoute = JavaScriptReverseRoute(
       "controllers.HomeController.index",
@@ -30,7 +50,7 @@ package controllers.javascript {
   
   }
 
-  // @LINE:11
+  // @LINE:12
   class ReverseAssets(_prefix: => String) {
 
     def _defaultPrefix: String = {
@@ -38,7 +58,7 @@ package controllers.javascript {
     }
 
   
-    // @LINE:11
+    // @LINE:12
     def versioned: JavaScriptReverseRoute = JavaScriptReverseRoute(
       "controllers.Assets.versioned",
       """

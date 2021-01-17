@@ -21,7 +21,8 @@ object Parsers {
 class TodoService @Inject()(db: Database) extends TodoServices {
   def create(aTodo: String) = Future {
     db.withConnection { implicit connection: Connection =>
-      SQL(s"insert into Todo(todo) values ($aTodo)")
+      SQL(s"insert into Todo(todo) values ({todo})")
+        .on("todo" -> aTodo)
         .executeInsert()
       }
   }

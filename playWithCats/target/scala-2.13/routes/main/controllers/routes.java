@@ -1,6 +1,6 @@
 // @GENERATOR:play-routes-compiler
 // @SOURCE:/Users/chrissongz/Desktop/sca/playWithCats/conf/routes
-// @DATE:Sat Jan 16 18:04:57 GMT 2021
+// @DATE:Sun Jan 17 12:28:18 GMT 2021
 
 package controllers;
 

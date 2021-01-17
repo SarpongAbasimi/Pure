@@ -1,6 +1,6 @@
 // @GENERATOR:play-routes-compiler
 // @SOURCE:/Users/chrissongz/Desktop/sca/playWithCats/conf/routes
-// @DATE:Sat Jan 16 18:04:57 GMT 2021
+// @DATE:Sun Jan 17 12:28:18 GMT 2021
 
 import play.api.mvc.Call
 
@@ -17,6 +17,18 @@ package controllers {
     }
 
   
+    // @LINE:9
+    def created(): Call = {
+      
+      Call("POST", _prefix + { _defaultPrefix } + "created")
+    }
+  
+    // @LINE:8
+    def create(): Call = {
+      
+      Call("GET", _prefix + { _defaultPrefix } + "create")
+    }
+  
     // @LINE:7
     def index(): Call = {
       
@@ -25,14 +37,14 @@ package controllers {
   
   }
 
-  // @LINE:11
+  // @LINE:12
   class ReverseAssets(_prefix: => String) {
     def _defaultPrefix: String = {
       if (_prefix.endsWith("/")) "" else "/"
     }
 
   
-    // @LINE:11
+    // @LINE:12
     def versioned(file:Asset): Call = {
       implicit lazy val _rrc = new play.core.routing.ReverseRouteContext(Map(("path", "/public"))); _rrc
       Call("GET", _prefix + { _defaultPrefix } + "assets/" + implicitly[play.api.mvc.PathBindable[Asset]].unbind("file", file))

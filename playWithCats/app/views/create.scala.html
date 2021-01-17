@@ -1,0 +1,16 @@
+@import helper._
+
+@(todoForm: Form[model.Todo])(implicit request: MessagesRequestHeader)
+
+@main("Create"){
+    @helper.form(action = routes.HomeController.created()){
+        @CSRF.formField
+        @helper.inputText(todoForm("todo"))
+    <input type="submit" value="Submit">
+    }
+    <a href="@routes.HomeController.index">
+        <span>
+            < back
+        </span>
+    </a>
+}
