@@ -1,6 +1,7 @@
-@(todos: List[model.Todo])
+@(todos: List[model.Todo])(implicit flash: Flash)
 
 @main("Welcome") {
+  <div>@flash.get("success").getOrElse("Welcome!")</div>
   @for(todo <- todos){
     <div>
       <p>@todo.todo</p>

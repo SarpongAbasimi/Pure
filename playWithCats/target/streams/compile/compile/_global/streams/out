@@ -1,4 +1,5 @@
-[0m[[0m[31merror[0m] [0m[0m/Users/chrissongz/Desktop/sca/playWithCats/app/controllers/HomeController.scala:35:17: Cannot write an instance of play.api.mvc.Result to HTTP response. Try to define a Writeable[play.api.mvc.Result][0m
-[0m[[0m[31merror[0m] [0m[0m      BadRequest(Ok(s"sThere was something worong $hasErrors"))[0m
-[0m[[0m[31merror[0m] [0m[0m                ^[0m
+[0m[[0m[31merror[0m] [0m[0m/Users/chrissongz/Desktop/sca/playWithCats/app/controllers/HomeController.scala:25:26: not enough arguments for method apply: (todos: List[model.Todo], flash: play.api.mvc.Flash)play.twirl.api.HtmlFormat.Appendable in object index.[0m
+[0m[[0m[31merror[0m] [0m[0mUnspecified value parameter flash.[0m
+[0m[[0m[31merror[0m] [0m[0m      Ok(views.html.index(listOfToDos))[0m
+[0m[[0m[31merror[0m] [0m[0m                         ^[0m
 [0m[[0m[31merror[0m] [0m[0mone error found[0m

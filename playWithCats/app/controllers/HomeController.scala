@@ -35,7 +35,7 @@ class HomeController @Inject()(cc: ControllerComponents, todoService: TodoServic
       BadRequest(views.html.create(hasErrors))
     }, todoData => {
       todoService.create(todoData.todo)
-      Redirect(routes.HomeController.index())
+      Redirect(routes.HomeController.index()).flashing("success" -> "The item has been created")
     })
   }
 }
